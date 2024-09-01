@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ambulance Service Providers</title>
+    <link rel="stylesheet" href="admin_pagee1.css">
+</head>
+<body>
+    <video autoplay muted loop id="bgVideo">
+        <source src="pictures/bck vid.mp4" type="video/mp4">
+        <!-- Add additional source elements for different video formats if needed -->
+        Your browser does not support the video tag.
+    </video>
+    <header>
+        <h1>Admin Home Page</h1>
+        <button class="logout-button" onclick="location.href='admin_loginpage.php'">Logout</button>
+    </header>
+    <div class="container">
+        <div class="label" onclick="location.href='pharma_upload.php'">
+            <img src="pictures/wallpaperflare.com_wallpaper%20(11).jpg" alt="upload med">
+            <span>Upload Medicine</span>
+        </div>
+        <div class="label" onclick="location.href='pharmacist_view.php'">
+            <img src="pictures/request%20list.jpg" alt="Requests">
+            <span>View Medicine Requests</span>
+        </div>
+        <div class="label" onclick="location.href='psql/blog_creation.php'">
+            <img src="pictures/blogss.jpg" alt="Requests">
+            <span>Add Daily Blog</span>
+        </div>
+        <div class="label" onclick="location.href='first_aid.php'">
+            <img src="pictures/uplaod%20first%20aid.jpg" alt="Requests">
+            <span>Upload First Aid Procedures</span>
+        </div>
+    </div>
+</body>
+</html>

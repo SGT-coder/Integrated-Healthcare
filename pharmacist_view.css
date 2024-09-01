@@ -1,0 +1,61 @@
+/* Global reset and basic styling */
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Optional: Hide overflow to prevent scrolling */
+}
+
+/* Video background styling */
+#video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensure video covers entire area without stretching */
+    z-index: -1000; /* Ensure video is behind other content */
+}
+
+/* Container for content */
+.container {
+    position: relative;
+    z-index: 1; /* Ensure content is above video */
+}
+
+/* Additional styling for header */
+header {
+    text-align: center;
+    color: white; /* Example styling */
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.5); /* Example background color with transparency */
+}
+
+/* Table styling (example) */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: rgba(255, 255, 255, 0.8); /* Example background color with transparency */
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+    color: #333;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    /* Example: Adjust styles for smaller screens */
+    header {
+        font-size: 1.5rem;
+    }
+    table {
+        font-size: 0.8rem;
+    }
+}

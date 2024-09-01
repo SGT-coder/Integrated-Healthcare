@@ -1,0 +1,130 @@
+/* Reset default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    color: #333;
+    margin: 0; /* Ensure no default margin */
+}
+
+/* Video background */
+#video-bg {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -1;
+}
+
+/* Logo styles */
+.logo {
+    position: absolute;
+    top: 20px;
+    left: 20px; /* Adjust left position as needed */
+    height: 80px;
+    z-index: 3;
+}
+
+/* Header styles */
+header {
+    background-color: #5c5a5a;
+    color: white;
+    text-align: center;
+    padding: 35px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2em;
+    flex: 1;
+}
+
+/* Search bar styles */
+.search-bar {
+    position: absolute;
+    top: 20px; /* Adjust top position */
+    right: 20px; /* Adjust right position */
+    display: flex;
+    align-items: center;
+}
+
+.search-bar input[type="text"] {
+    padding: 5px;
+    font-size: 16px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 4px;
+    outline: none;
+}
+
+.search-bar button {
+    padding: 5px 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    background-color: #333;
+    color: white;
+    outline: none;
+}
+
+/* Container styles */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* Medicine item styles */
+.medicine {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 15px;
+    padding: 15px;
+    width: 300px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.medicine:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.medicine img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.medicine p {
+    margin: 10px 0;
+}
+
+.medicine .description {
+    font-size: 0.9em;
+    color: #666;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .medicine {
+        width: 100%;
+    }
+}

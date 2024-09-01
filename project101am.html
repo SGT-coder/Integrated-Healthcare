@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Provider 1 Details</title>
+    <link rel="stylesheet" href="update_ambu.css">
+</head>
+<body>
+    <header>
+        <h1>Provider 1 Details</h1>
+    </header>
+    <div class="container">
+        <h2>Ambulance Information</h2>
+        <ul>
+            <li>Total Ambulances: <span id="total-ambulances"></span></li>
+            <li>Ambulances on Duty: <span id="on-duty-ambulances"></span></li>
+            <li>Ambulances off Duty: <span id="off-duty-ambulances"></span></li>
+        </ul>
+        <button id="request-button">Request Ambulance</button>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const totalAmbulances = localStorage.getItem('totalAmbulances') || 10;
+            const onDutyAmbulances = localStorage.getItem('onDutyAmbulances') || 6;
+            const offDutyAmbulances = localStorage.getItem('offDutyAmbulances') || 4;
+
+            document.getElementById('total-ambulances').textContent = totalAmbulances;
+            document.getElementById('on-duty-ambulances').textContent = onDutyAmbulances;
+            document.getElementById('off-duty-ambulances').textContent = offDutyAmbulances;
+
+            document.getElementById('request-button').addEventListener('click', function() {
+                window.location.href = 'formlist.php';
+            });
+        });
+    </script>
+</body>
+</html>

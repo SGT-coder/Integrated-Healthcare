@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Hospitals Near You</title>
+    <link rel="stylesheet" href="newstyles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="neyjava.js"></script>
+</head>
+<body>
+    <div class="video-overlay">
+        <video autoplay muted loop id="bg-video">
+            <source src="uploads/home_page.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+        </video>
+    </div>
+
+    <!-- Container for content -->
+    <div class="container">
+        <header>
+            <nav>
+                <img src="uploads/logoo.png" alt="Healthcare Logo" class="logo">
+            </nav>
+        </header>
+        <section id="search">
+            <div class="headings">
+                <h1>Find Hospital Near You</h1>
+            </div>
+            <form id="search-form" aria-label="serp-block-form" class="search-form">
+                <div class="input-group">
+                    <input id="search-query" type="text" autocomplete="off" placeholder="Search Hospitals, specialties or location" name="search_query">
+                    <span class="input-group-prepend">
+                        <i class="fas fa-search"></i>
+                    </span>
+                </div>
+                <button type="submit" aria-label="Search">
+                    <i class="fas fa-search"></i>
+                    <span>Search</span>
+                </button>
+            </form>
+            <div id="search-results" style="display: none;">
+                <!-- Search results will be displayed here -->
+            </div>   
+        </section>
+
+        <section class="doctors" id="doctors">
+            <h2 class="section-title">24/7 Emergency Services</h2>
+            <div id="emergency-services" class="hospital-list">
+                <!-- Manually added hospital card -->
+                <div class="hospital">
+                    <img src="uploads/hospital.png" alt="Sample Hospital" class="hospital-image">
+                    <span>Sample Hospital</span>
+                    <p>Location: New York, NY</p>
+                    <p>Specialties: Cardiology, Neurology</p>
+                    <p>Description: A leading hospital providing 24/7 emergency services.</p>
+                    <p>Emergency Services: Available</p>
+                    <button class="book-btn" onclick="window.location.href='hospital_book.html?hospital=Sample%20Hospital'">
+                        <i class="fas fa-calendar-check"></i> Book Appointment
+                    </button>
+                </div>
+                <div class="hospital">
+                    <img src="uploads/hospital.png" alt="Sample Hospital" class="hospital-image">
+                    <span>City General Hospital</span>
+                    <p>Location: New York, NY</p>
+                    <p>Specialties: Cardiology, Neurology</p>
+                    <p>Description: A leading hospital providing 24/7 emergency services.</p>
+                    <p>Emergency Services: Available</p>
+                    <button class="book-btn" onclick="window.location.href='hospital_book.html?hospital=City%20General%20Hospital'">
+                        <i class="fas fa-calendar-check"></i> Book Appointment
+                    </button>
+                    </div>
+            </div>
+        
+            <h2 class="section-title">Top Hospitals</h2>
+            <div id="top-hospitals" class="hospital-list">
+                <!-- Manually added hospital card -->
+                <div class="hospital">
+                    <img src="uploads/hospital.png" alt="Top Hospital" class="hospital-image">
+                    <span>Xy Hospital</span>
+                    <p>Location: Los Angeles, CA</p>
+                    <p>Specialties: Orthopedics, Dermatology</p>
+                    <p>Description: Recognized as one of the top hospitals for specialized care.</p>
+                    <p>Emergency Services: Available</p>
+                    <button class="book-btn" onclick="window.location.href='hospital_book.html?hospital=Xy%20Hospital'">
+                        <i class="fas fa-calendar-check"></i> Book Appointment
+                    </button>
+                </div>
+                <div class="hospital">
+                    <img src="uploads/hospital.png" alt="Top Hospital" class="hospital-image">
+                    <span>City General Hospital</span>
+                    <p>Location: New York, NY</p>
+                    <p>Specialties: Cardiology, Neurology</p>
+                    <p>Description: A leading hospital providing 24/7 emergency services.</p>
+                    <p>Emergency Services: Available</p>
+                    <button class="book-btn" onclick="window.location.href='hospital_book.html?hospital=City%20General%20Hospital'">
+                        <i class="fas fa-calendar-check"></i> Book Appointment
+                    </button>
+                    </div>
+            </div>
+        </section>
+        
+    </div>
+    
+    <script>
+        $(document).ready(function() {
+            // Fetch 24/7 emergency hospitals
+            $.ajax({
+                url: 'fetch_24.php',
+                type: 'GET',
+                dataType: 'json',
+                success: function(hospitals) {
+                    var container = $('#emergency-services');
+                    hospitals.forEach(function(hospital) {
+                        appendHospitalCard(container, hospital);
+                    });
+                },
+                error: function() {
+                    console.error('Error fetching 24/7 hospital data');
+                }
+            });
+
+            // Fetch top hospitals
+            $.ajax({
+                url: 'fetch_hospitals.php',
+                type: 'GET',
+                dataType: 'json',
+                success: function(hospitals) {
+                    var container = $('#top-hospitals');
+                    hospitals.forEach(function(hospital) {
+                        appendHospitalCard(container, hospital);
+                    });
+                },
+                error: function() {
+                    console.error('Error fetching top hospital data');
+                }
+            });
+
+            // Search form submission
+            $('#search-form').submit(function(event) {
+                event.preventDefault();
+                var searchTerm = $('#search-query').val();
+                // Perform search (you'll need to implement this part)
+                console.log('Searching for:', searchTerm);
+            });
+        });
+
+        function appendHospitalCard(container, hospital) {
+            var hospitalCard = $('<div>').addClass('hospital');
+            hospitalCard.append($('<img>').attr('src', hospital.image).attr('alt', hospital.name));
+            hospitalCard.append($('<span>').text(hospital.name).css('color', 'blue'));
+            hospitalCard.append($('<p>').text('Location: ' + hospital.location));
+            hospitalCard.append($('<p>').text('Specialties: ' + hospital.specialties));
+            hospitalCard.append($('<p>').text('Description: ' + hospital.description));
+            hospitalCard.append($('<p>').text('Emergency Services: ' + hospital.emergency_services));
+            hospitalCard.append($('<button>').addClass('book-btn').html('<i class="fas fa-calendar-check"></i> Book Appointment').click(function() {
+                window.location.href = 'hospital_book.html?hospital=' + encodeURIComponent(hospital.name);
+            }));
+            container.append(hospitalCard);
+        }
+    </script>
+    <style>
+        .book-btn {
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 150px;
+        }
+        .book-btn:hover {
+            background-color: #0056b3;
+        }
+
+        #search {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 40px 20px;
+            border-radius: 10px;
+            margin-top: 40px;
+            box-shadow: var(--shadow);
+        }
+        .headings h1 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .headings h5 {
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+            margin-top: 0;
+        }
+
+        .search-form {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .input-group {
+            position: relative;
+            width: 60%;
+        }
+
+        #search-query {
+            width: 100%;
+            padding: 15px 20px;
+            font-size: 1rem;
+            border: 2px solid var(--primary-color);
+            border-radius: 30px;
+            transition: var(--transition);
+        }
+
+        #search-query:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+        }
+        .input-group-prepend {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary-color);
+        }
+        button[type="submit"] {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1rem;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-left: 100px;
+        }
+
+        button[type="submit"]:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        .search-info {
+            margin-top: 10px;
+            font-style: italic;
+            color: #666;
+        }
+
+        /* Hospital list styles */
+        .hospital-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        /* Hospital card styles */
+        .hospital {
+            width: calc(30% - 40px);
+            margin: 20px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .hospital img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+        }
+
+        .hospital span {
+            display: block;
+            padding: 10px 0;
+            font-size: 1.4rem;
+            color: blue; /* Changed color to blue */
+        }
+
+        .hospital:hover {
+            background-color: #f0f0f0;
+        }
+
+        footer {
+            background-color: #343a40;
+            color: #f8f9fa;
+            padding: 20px; /* Increased padding */
+            text-align: center;
+            flex-shrink: 0;
+            font-size: 0.9rem;
+            bottom: 0;
+            width: 100%;
+            z-index: 1;
+        }
+        .search-results-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    margin-top: 20px;
+}
+
+.hospital-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin: 20px;
+    width: calc(30% - 40px);
+    height:auto;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.hospital-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.hospital-image {
+    padding-left:70px;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.hospital-info {
+    text-align: center;
+    padding: 15px;
+}
+
+.hospital-info h3 {
+    text-align: center;
+    color: blue; /* Changed name color to blue */
+}
+
+.book-btn {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 15px;
+    text-align: center;
+    width: 150px; /* Decreased width */
+}
+
+.book-btn:hover {
+    background-color: #0056b3;
+}
+
+footer {
+    background-color: #343a40;
+    color: #f8f9fa;
+    padding: 20px; /* Increased padding for height */
+    text-align: center;
+    flex-shrink: 0;
+    font-size: 0.9rem;
+    bottom: 0;
+    width: 100%;
+    z-index: 1;
+}
+    </style>
+    <footer>
+        <p>&copy; 2024 Healthcare Finder. All rights reserved.</p>
+    </footer>
+</body>
+</html>

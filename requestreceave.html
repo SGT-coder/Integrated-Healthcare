@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ambulance Requests</title>
+    <link rel="stylesheet" href="amservicepro.css">
+</head>
+<body>
+    <header>
+        <h1>Ambulance Requests</h1>
+    </header>
+    <div class="container">
+        <ul id="requests-list">
+            <!-- List of requests will be populated here -->
+        </ul>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mock data for demonstration
+            const requests = [
+                { name: "John Doe", age: "30", sex: "Male", location: "123 Main St", phone: "091-234-5678" },
+                { name: "Jane Smith", age: "45", sex: "Female", location: "456 Elm St", phone: "091-876-5432" }
+            ];
+
+            const requestsList = document.getElementById('requests-list');
+            requests.forEach(request => {
+                const listItem = document.createElement('li');
+                listItem.textContent = `Name: ${request.name}, Age: ${request.age}, Sex: ${request.sex}, Location: ${request.location}, Phone: ${request.phone}`;
+                requestsList.appendChild(listItem);
+            });
+        });
+    </script>
+</body>
+</html>

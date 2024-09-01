@@ -1,0 +1,156 @@
+/* pharma_upload1.css */
+
+/* Ensure full height for the video background */
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Styling for the video background */
+#video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1; /* Place it behind the content */
+}
+
+/* Center the content */
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: rgba(0, 0, 0, 0.5); /* Slightly dark overlay for better text visibility */
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Title styling */
+.title-wrapper {
+    position: absolute;
+    top: 20px;
+    width: 100%;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2em;
+    margin: 0;
+}
+
+/* Wrapper for content */
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 600px;
+    width: 100%;
+}
+
+/* Form container with blur effect */
+form::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    filter: blur(10px); /* Apply blur effect */
+    z-index: -1;
+    border-radius: 10px; /* Match the form's border-radius */
+}
+
+/* Form styling */
+form {
+    position: relative;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    max-width: 600px;
+    width: 100%;
+    backdrop-filter: blur(10px); /* Apply blur effect */
+    margin-top: 20px; /* Reduced margin to ensure form fits on screen */
+    margin-bottom: 20px; /* Added bottom margin for spacing */
+}
+
+/* Label styling */
+label {
+    display: block;
+    font-size: 1.2em; /* Make labels larger */
+    margin-bottom: 10px;
+    text-align: left;
+    width: 100%;
+}
+
+/* Input container to align items center */
+.input-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+/* Input and textarea styling */
+input[type="text"],
+textarea,
+input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+/* Larger description box */
+textarea {
+    height: 150px; /* Adjust the height as needed */
+}
+
+/* Submit button styling */
+input[type="submit"] {
+    background: #007BFF;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    margin-top: 20px;
+}
+
+input[type="submit"]:hover {
+    background: #0056b3;
+}
+
+/* Responsive design adjustments */
+@media (max-width: 600px) {
+    form {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 1.5em;
+    }
+
+    .input-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    input[type="text"],
+    textarea,
+    input[type="file"] {
+        width: 100%;
+        margin-left: 0;
+    }
+}

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="home_page2.css">
+    <link rel="stylesheet" href="chatbot.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0">
+    <script src="testchatbot.js" defer></script>
+</head>
+<body>
+    <video autoplay muted loop id="background-video">
+        <source src="pictures/home_page.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <nav class="navbar">
+        <div class="logo">
+            <img src="pictures/logoo.png" alt="Logo">
+        </div>
+        <ul>
+            <li><a href="ambulance_home_page.php">Request Ambulance</a></li>
+            <li><a href="med_list.php">Book Medicine</a></li>
+            <li><a href="psql/newindex.html">Book Hospital Appointment</a></li>
+            <li><a href="psql/index.html">Book Doctor Appointment</a></li>
+            <li><a href="first_aid_display.php">Applying First Aid</a></li>
+            <li><a href="psql/display_blog.php">Blogs</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <div class="label" onclick="location.href='ambulance_home_page.php'">
+            <img src="pictures/Ambulance.jpg" alt="Ambulance Request">
+            <h2>Ambulance Request</h2>
+        </div>
+        <div class="label" onclick="location.href='med_list.php'">
+            <img src="pictures/wallpaperflare.com_wallpaper%20(11).jpg" alt="Book Medicine">
+            <h2>Book Medicine</h2>
+        </div>
+        <div class="label" onclick="location.href='psql/newindex.html'">
+            <img src="pictures/book_appointmnet.jpg" alt="Book An Appointment">
+            <h2>Book an appointment at Hospitals</h2>
+        </div>
+        <div class="label" onclick="location.href='psql/display_blog.php'">
+            <img src="pictures/Blogs.jpg" alt="Read daily Blogs">
+            <h2>Read daily Blogs</h2>
+        </div>
+        <div class="label" onclick="location.href='first_aid_display.php'">
+            <img src="pictures/First_aid.jpg" alt="Label 5">
+            <h2>Applying First Aid</h2>
+        </div>
+        <div class="label" onclick="location.href='psql/index.html'">
+            <img src="pictures/Doctor%20app.jpg" alt="Label 6">
+            <h2>Book a doctor's appointment</h2>
+        </div>
+    </div>
+
+    <button class="chatbot-toggler">
+        <span class="material-symbols-outlined toggle-icon">mode_comment</span>
+    </button>
+    <div class="chatbot">
+        <header>
+            <h2>Chatbot</h2>
+            <span class="material-symbols-outlined close-icon">close</span>
+        </header>
+        <ul class="chatbox">
+            <li class="chat incoming">
+                <span class="material-symbols-outlined">smart_toy</span>
+                <p>Hi there <br> How can I help you today?</p>
+            </li>
+        </ul>
+        <div class="chat-input">
+            <textarea style="border: none;"  placeholder="Enter a Message...." required></textarea>
+            <span id="send-btn" class="material-symbols-outlined">send</span>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p>Copyright 2024 © HealthGuidance. All rights reserved.</p>
+            <p>Contact: Phone: +251 973095314 | Email: contact@healthguidance.com</p>
+            <p class="socials-text">Our Socials:</p>
+            <p>
+                <a href="https://t.me/healthguidanceintegeated" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram" style="width: 24px; height: 24px; vertical-align: middle;">
+                </a>
+            </p>
+        </div>
+    </footer>
+</body>
+<style>
+ 
+
+.chatbot {
+    position: fixed;
+    right: 35px;
+    bottom: 65px;
+    width: 300px;
+    height: 500px; /* Set a fixed height */
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    z-index: 1000; /* Ensures the chatbot is on top */
+}
+
+.chatbot header {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chatbox {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+}
+
+.chatbox .chat {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.chatbox .incoming {
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.chatbox .outgoing {
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.chatbox .chat p {
+    background-color: #f1f1f1;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 0;
+    max-width: 70%;
+}
+
+.chatbox .incoming p {
+    background-color: #cce5ff; /* Change this to the color you want for the incoming message */
+}
+
+.chatbox .incoming span,
+.chatbox .outgoing span {
+    font-size: 24px;
+    margin: 0 10px;
+    display: flex;
+    align-items: center;
+}
+
+.thinking-animation {
+    font-size: 12px; /* Smaller font size for the thinking animation */
+}
+
+.chat-input {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid #ccc;
+}
+
+.chat-input textarea {
+    height: 30px;
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: none;
+}
+#send-btn{
+  height:30px;
+}
+.chat-input span {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    margin-left: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.chatbot-toggler {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 1001; /* Ensures the toggler is on top */
+    cursor: pointer;
+}
+
+
+
+  </style>
+</html>

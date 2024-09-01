@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Provider 1 Details</title>
+    <link rel="stylesheet" href="amservicepro.css">
+</head>
+<body>
+    <header>
+        <h1>Provider 1 Details</h1>
+    </header>
+    <div class="container">
+        <h2>Ambulance Information</h2>
+        <ul>
+            <li>Total Ambulances: <span id="total-ambulances"></span></li>
+            <li>Ambulances on Duty: <span id="on-duty-ambulances"></span></li>
+            <li>Ambulances off Duty: <span id="off-duty-ambulances"></span></li>
+        </ul>
+        <button id="update-button">Update Information</button>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Replace these values with actual data as needed
+            const totalAmbulances = 7;
+            const onDutyAmbulances = 3;
+            const offDutyAmbulances = 2;
+
+            document.getElementById('total-ambulances').textContent = totalAmbulances;
+            document.getElementById('on-duty-ambulances').textContent = onDutyAmbulances;
+            document.getElementById('off-duty-ambulances').textContent = offDutyAmbulances;
+
+            document.getElementById('update-button').addEventListener('click', function() {
+                // Implement update functionality here
+                alert("Update functionality not implemented.");
+            });
+        });
+    </script>
+</body>
+</html>

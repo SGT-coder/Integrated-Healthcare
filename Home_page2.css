@@ -1,0 +1,133 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+#background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the video covers the entire viewport without being zoomed in */
+    z-index: -1;
+}
+
+.navbar {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    left: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 2;
+}
+
+.logo {
+    margin-left: 20px; /* Adjusted margin to move the logo a little bit to the right */
+}
+
+.logo img {
+    height: 70px; /* Adjusted height to make the logo bigger */
+}
+
+.navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 15px;
+}
+
+.navbar li {
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+}
+
+.navbar a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    transition: background 0.3s;
+}
+
+.navbar a:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+    position: relative; /* Ensures the container is above the video */
+    z-index: 1;
+    min-height: 100vh; /* Ensure container takes full height of the viewport */
+    margin-top: 100px; /* Adjusted margin to create space between navbar and labels */
+}
+
+.label {
+    flex: 1 1 25%; /* Adjusted to make the labels smaller */
+    margin: 10px;
+    padding: 15px; /* Adjusted padding to make the labels smaller */
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.label img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.label h2 {
+    margin-top: 10px;
+}
+
+.label:hover {
+    transform: scale(1.05);
+}
+
+footer {
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    font-size: 18px; /* Increased font size */
+}
+
+.footer-content p {
+    margin: 10px 0; /* Increased margin */
+}
+
+.footer-content a {
+    color: white; /* Ensures link is white */
+    text-decoration: none; /* Removes underline */
+    display: inline-flex;
+    align-items: center;
+    gap: 8px; /* Space between icon and text */
+    font-size: 18px; /* Matches text font size */
+}
+
+.footer-content a img {
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+}
+
+.footer-content a:hover {
+    text-decoration: underline; /* Adds underline on hover */
+}

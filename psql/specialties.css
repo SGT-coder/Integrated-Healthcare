@@ -1,0 +1,128 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f4f4f4;
+    background-image: url('uploads/speciality.webp');
+    background-size: cover;
+    background-position: center;
+}
+
+header {
+    background-color: #8d97ac;
+    color: white;
+    padding: 1rem 2rem;
+}
+
+header nav {
+    display: flex;
+    align-items: center;
+}
+
+header .logo {
+    height: 83px;
+}
+
+#primary-care-doctors {
+    text-align: center;
+    padding: 2rem;
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+    margin: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#primary-care-doctors h1 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.doctor-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.doctor-card {
+    width: 100%;
+    max-width: 300px;
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.doctor-card img {
+    width: 200px;
+    height: 200px;
+    border-radius: 100%;
+    object-fit: cover;
+}
+
+.doctor-info {
+    text-align: center;
+    flex: 1;
+}
+
+.doctor-info h3 {
+    margin: 0 0 0.5rem 0;
+}
+
+.doctor-info p {
+    margin: 0.5rem 0;
+}
+
+.doctor-info ul {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0;
+}
+
+.doctor-info ul li {
+    margin: 0.5rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.doctor-info ul li i {
+    margin-right: 0.5rem;
+}
+
+.booking-options {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.online-booking {
+    background-color: #ffcc00;
+    color: #0044cc;
+    border: none;
+    border-radius: 5px;
+    padding: 0.5rem 2rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.online-booking:hover {
+    background-color: #e6b800;
+}
+
+.phone-number {
+    color: #0044cc;
+    font-weight: bold;
+    padding: 0.5 rem 2 rem;
+}
+
+@media (max-width: 600px) {
+    .doctor-card {
+        max-width: 100%;
+    }
+}

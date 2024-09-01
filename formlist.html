@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request Ambulance</title>
+    <link rel="stylesheet" href="formlist.css">
+</head>
+<body>
+    <header>
+        <h1>Request Ambulance</h1>
+    </header>
+    <div class="container">
+        <form id="request-form">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="age">Age:</label>
+            <select id="age" name="age" required>
+                <option value="" disabled selected>Select your age</option>
+                <option value="18-25">18-25</option>
+                <option value="26-35">26-35</option>
+                <option value="36-45">36-45</option>
+                <option value="46-55">46-55</option>
+                <option value="56-65">56-65</option>
+                <option value="66+">66+</>66+</option>
+            </select>
+
+            <label for="sex">Sex:</label>
+            <select id="sex" name="sex" required>
+                <option value="" disabled selected>Select your sex</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
+
+            <label for="location">Location:</label>
+            <input type="text" id="location" name="location" required>
+
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" required pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="091-234-5678">
+
+            <button type="submit">Send</button>
+        </form>
+    </div>
+    <script>
+        document.getElementById('request-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const formData = {
+                name: document.getElementById('name').value,
+                age: document.getElementById('age').value,
+                sex: document.getElementById('sex').value,
+                location: document.getElementById('location').value,
+                phone: document.getElementById('phone').value,
+            };
+
+            // Retrieve existing data
+            let requests = JSON.parse(localStorage.getItem('ambulanceRequests')) || [];
+            // Add new form data
+            requests.push(formData);
+            // Store updated array back in local storage
+            localStorage.setItem('ambulanceRequests', JSON.stringify(requests));
+            alert('Request sent successfully');
+        });
+    </script>
+</body>
+</html>

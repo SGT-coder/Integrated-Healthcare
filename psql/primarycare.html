@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Primary Care Doctors</title>
+    <link rel="stylesheet" href="specialties.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+    // Fetch doctor data from the server
+    $.ajax({
+        url: 'fetch_doctors.php',
+        type: 'GET',
+        data: { specialty: 'primary care' }, // Pass the specialty as a query parameter
+        dataType: 'json',
+        success: function(doctors) {
+            var doctorList = $('.doctor-list');
+            doctors.forEach(function(doctor) {
+                var doctorCard = $('<div>').addClass('doctor-card');
+                var img = $('<img>').attr('src', doctor.image).attr('alt', 'Doctor Image');
+                var doctorInfo = $('<div>').addClass('doctor-info');
+                var name = $('<h3>').text(doctor.name);
+
+                // Specialty with icon
+                var specialties = $('<p>').html('<i class="fas fa-clinic-medical" style="color: blue;"></i> Psychiatry');
+
+                var location = $('<ul><li><i class="fas fa-map-marker-alt" style="color: blue;"></i> ' + doctor.location + '</li></ul>');
+                var description = $('<p>').text(doctor.description);
+                var bookingOptions = $('<div>').addClass('booking-options');
+                var bookButton = $('<button>').addClass('online-booking').html('<i class="fas fa-calendar-check"></i> Book Online');
+                var phoneNumber = $('<span>').addClass('phone-number').html('<i"></i> ');
+
+                doctorInfo.append(name, specialties, location, description);
+                bookingOptions.append(bookButton, phoneNumber);
+                doctorCard.append(img, doctorInfo, bookingOptions);
+                doctorList.append(doctorCard);
+            });
+        },
+        error: function() {
+            console.error('Error fetching doctor data');
+        }
+    });
+
+    // Attach click event handler for online booking
+    $(document).on('click', '.online-booking', function() {
+        var doctorName = $(this).closest('.doctor-card').find('.doctor-info h3').text().trim();
+        var url = 'book.html?doctor=' + encodeURIComponent(doctorName);
+        window.location.href = url;
+    });
+});
+
+    </script>
+</head>
+<body>
+    <header>
+        <nav>
+            <img src="uploads/logoo.png" alt="Healthcare Logo" class="logo">
+        </nav>
+    </header>
+    <section id="primary-care-doctors">
+        <h1>Primary Care Doctors</h1>
+        <div class="doctor-list">
+            <!-- Sample Doctor Info -->
+            <div class="doctor-card">
+                <img src="uploads/doctor.png" alt="Doctor Image">
+                <div class="doctor-info">
+                    <h3>Dr. John Doe</h3>
+                    <p><i class="fas fa-clinic-medical" style="color: blue;"></i> Family Medicine</p>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt" style="color: blue;"></i> New York, NY</li>
+                    </ul>
+                    <p>Dr. John Doe has over 15 years of experience in family medicine, providing comprehensive care for patients of all ages.</p>
+                </div>
+                <div class="booking-options">
+                    <button class="online-booking"><i class="fas fa-calendar-check"></i> Book Online</button>
+                    <span class="phone-number"><i class="fas fa-phone-alt"></i> (123) 456-7890</span>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

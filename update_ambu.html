@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Ambulance Info</title>
+    <link rel="stylesheet" href="update_ambu.css">
+</head>
+<body>
+    <header>
+        <h1>Update Ambulance Info</h1>
+    </header>
+    <div class="container">
+        <form id="update-form">
+            <label for="total-ambulances">Total Ambulances:</label>
+            <input type="number" id="total-ambulances" name="total-ambulances" required>
+
+            <label for="on-duty-ambulances">Ambulances on Duty:</label>
+            <input type="number" id="on-duty-ambulances" name="on-duty-ambulances" required>
+
+            <label for="off-duty-ambulances">Ambulances off Duty:</label>
+            <input type="number" id="off-duty-ambulances" name="off-duty-ambulances" required>
+
+            <button type="submit">Update</button>
+        </form>
+    </div>
+    <script>
+        document.getElementById('update-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const totalAmbulances = document.getElementById('total-ambulances').value;
+            const onDutyAmbulances = document.getElementById('on-duty-ambulances').value;
+            const offDutyAmbulances = document.getElementById('off-duty-ambulances').value;
+
+            localStorage.setItem('totalAmbulances', totalAmbulances);
+            localStorage.setItem('onDutyAmbulances', onDutyAmbulances);
+            localStorage.setItem('offDutyAmbulances', offDutyAmbulances);
+
+            alert('Ambulance information updated!');
+        });
+    </script>
+</body>
+</html>
